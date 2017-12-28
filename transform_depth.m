@@ -19,7 +19,7 @@ Y = data(:,2);
 alpha = X*cos(theta)*alpha_spacing+alpha_min;
 
 %% Transform alpha to Z
-a = 0.7608;
+a = 0.7608;                 % Values obtained from alpha-to-depth calibration
 b = 0.03898;
 c = 1.511;
 d = 36.87;
