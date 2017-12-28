@@ -7,13 +7,11 @@
 
 function depth_corrected_profile = transform_depth(profile_filename, theta, alpha_spacing, alpha_min)
 
-data = csvread(profile_filename, 2, 1);
+data = csvread(profile_filename, 1, 0);
 
 % Assign arrays
 X = data(:,1);
 Y = data(:,2);
-
-%x = linspace(1,59,59);
 
 %% Transform slices to alpha
 alpha = X*cos(theta)*alpha_spacing+alpha_min;
@@ -28,8 +26,8 @@ z = (1/b)*tan((alpha-c)/a)+d;
 z = round(z, 1);
 
 % Find valid domain of the function
-syms Alpha(Z)
-Alpha(Z) = a*atan(b*(Z-d))+c;
+syms Z 
+Alpha = symfun(a*atan(b*(Z-d))+c, Z);
 
 lower_bound = double(limit(Alpha, -inf));
 upper_bound = double(limit(Alpha, inf));
@@ -42,6 +40,7 @@ Y_truncated = Y(truncated_idx);
 depth_corrected_profile = [z_truncated, Y_truncated];
 
 clear data
+clear Alpha
 
 end
 
