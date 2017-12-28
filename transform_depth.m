@@ -1,4 +1,4 @@
-% 2017-12-27
+% 2017-12-28
 % Jorge Madrid
 % SPIM2 _ Light Field support software
 %
