@@ -66,3 +66,17 @@ end
 
 res_eval_filename = fullfile(MEASUREMENTS, strcat('resolution_evaluation','.csv'));
 csvwrite(res_eval_filename, resolution_evaluation);
+
+%% Plot resolution matrix
+
+
+m = zeros(max(resolution_evaluation(:,1)), max(resolution_evaluation(:,2)));
+
+for ir=1:length(resolution_evaluation)
+    m(resolution_evaluation(ir,1),resolution_evaluation(ir,2))  = resolution_evaluation(ir,3);
+end
+
+
+imagesc(m)
+colorbar
+
