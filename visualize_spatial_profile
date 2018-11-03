@@ -1,0 +1,16 @@
+imname = 'f2-a4.tif'
+
+im = imread(imname);
+im = rgb2gray(im);
+
+%imhist(im)
+
+[dim1, dim2] = size(im)
+x = linspace(1,dim1,dim1);
+y = linspace(1,dim2,dim2);
+
+[X,Y] = meshgrid(1:1:dim2,1:1:dim1);
+
+s = surf(X,Y,im)
+colorbar
+s.EdgeColor = 'none'
