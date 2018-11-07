@@ -14,3 +14,25 @@ y = linspace(1,dim2,dim2);
 s = surf(X,Y,im)
 colorbar
 s.EdgeColor = 'none'
+
+%%%%%%%%%%%%%%%%%
+
+from PIL import Image
+import numpy as np
+import matplotlib.pyplot as plt
+import io
+
+imname = '20181103_field/f4-a4.tif'
+
+im = Image.open(imname).convert('L')
+
+width, height = im.size
+
+im_array = np.array(im)
+mean = np.mean(im_array)
+
+im_dif = (im_array-mean)/mean
+
+
+
+print(im_dif)
